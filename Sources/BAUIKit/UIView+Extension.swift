@@ -19,55 +19,76 @@ public protocol BaseUIViewPresent {
     var heightConstraintLayout: NSLayoutConstraint? {get set}
     
     @discardableResult mutating func setTop(constant: CGFloat) -> Self
+    @discardableResult mutating func setSafeAreaTop(constant: CGFloat) -> Self
+    @discardableResult mutating func setBottom(constant: CGFloat) -> Self
+    @discardableResult mutating func setSafeAreaBottom(constant: CGFloat) -> Self
+    @discardableResult mutating func setLeading(constant: CGFloat) -> Self
+    @discardableResult mutating func setTrailing(constant: CGFloat) -> Self
+    @discardableResult mutating func setCenterX(constant: CGFloat) -> Self
+    @discardableResult mutating func setCenterY(constant: CGFloat) -> Self
+    @discardableResult mutating func setFullConstraint(constant: CGFloat) -> Self
+    @discardableResult mutating func setSafeAreaFullConstraint(constant: CGFloat) -> Self
+    @discardableResult mutating func setWidth(constant: CGFloat) -> Self
+    @discardableResult mutating func setHeight(constant: CGFloat) -> Self
+    @discardableResult mutating func setWidthEqualHeight(multiplier: CGFloat) -> Self
+    @discardableResult mutating func setHeightEqualWidth(multiplier: CGFloat) -> Self
+    @discardableResult mutating func setTop(underView view: UIView ,constant: CGFloat) -> Self
+    @discardableResult mutating func setBottom(aboveView view: UIView ,constant: CGFloat) -> Self
+    @discardableResult mutating func setLeading(afterView view: UIView ,constant: CGFloat) -> Self
+    @discardableResult mutating func setTrailing(beforeView view: UIView ,constant: CGFloat) -> Self
+    @discardableResult mutating func setCenterX(equalTo view: UIView ,constant: CGFloat) -> Self
+    @discardableResult mutating func setCenterY(equalTo view: UIView ,constant: CGFloat) -> Self
+    @discardableResult mutating func setWidth(otherView: UIView?, multiplier: CGFloat) -> Self
+    @discardableResult mutating func setHeight(_ otherView: UIView?, multiplier: CGFloat) -> Self
 }
+//
+//extension BaseUIViewPresent {
+//    public var topConstraintLayout: NSLayoutConstraint? {
+//        get { return self.topConstraintLayout }
+//        set { self.topConstraintLayout = newValue }
+//    }
+//
+//    public var leadingConstraintLayout: NSLayoutConstraint? {
+//        get { self.leadingConstraintLayout }
+//        set { self.leadingConstraintLayout = newValue}
+//    }
+//
+//    public var trailingConstraintLayout: NSLayoutConstraint? {
+//        get { self.trailingConstraintLayout }
+//        set { self.trailingConstraintLayout = newValue}
+//    }
+//
+//    public var bottomConstraintLayout: NSLayoutConstraint? {
+//        get { self.bottomConstraintLayout }
+//        set { self.bottomConstraintLayout = newValue }
+//    }
+//    public var centerXContraintLayout: NSLayoutConstraint? {
+//        get { self.centerXContraintLayout }
+//        set { self.centerYConstraintLayout = newValue }
+//    }
+//    public var centerYConstraintLayout: NSLayoutConstraint? {
+//        get { self.centerYConstraintLayout }
+//        set { self.centerYConstraintLayout = newValue}
+//    }
+//    public var widthConstraintLayout: NSLayoutConstraint? {
+//        get { self.widthConstraintLayout }
+//        set { self.widthConstraintLayout = newValue }
+//    }
+//    public var heightConstraintLayout: NSLayoutConstraint? {
+//        get { self.heightConstraintLayout }
+//        set { self.heightConstraintLayout = newValue }
+//    }
+//}
 
-extension BaseUIViewPresent {
-    public var topConstraintLayout: NSLayoutConstraint? {
-        get { return self.topConstraintLayout }
-        set { self.topConstraintLayout = newValue }
-    }
-    
-    public var leadingConstraintLayout: NSLayoutConstraint? {
-        get { self.leadingConstraintLayout }
-        set { self.leadingConstraintLayout = newValue}
-    }
-    
-    public var trailingConstraintLayout: NSLayoutConstraint? {
-        get { self.trailingConstraintLayout }
-        set { self.trailingConstraintLayout = newValue}
-    }
-    
-    public var bottomConstraintLayout: NSLayoutConstraint? {
-        get { self.bottomConstraintLayout }
-        set { self.bottomConstraintLayout = newValue }
-    }
-    public var centerXContraintLayout: NSLayoutConstraint? {
-        get { self.centerXContraintLayout }
-        set { self.centerYConstraintLayout = newValue }
-    }
-    public var centerYConstraintLayout: NSLayoutConstraint? {
-        get { self.centerYConstraintLayout }
-        set { self.centerYConstraintLayout = newValue}
-    }
-    public var widthConstraintLayout: NSLayoutConstraint? {
-        get { self.widthConstraintLayout }
-        set { self.widthConstraintLayout = newValue }
-    }
-    public var heightConstraintLayout: NSLayoutConstraint? {
-        get { self.heightConstraintLayout }
-        set { self.heightConstraintLayout = newValue }
-    }
-}
-
-extension BaseUIViewPresent where Self: UIView {
-    @discardableResult public mutating func setTop(constant: CGFloat = 0) -> Self {
+public extension BaseUIViewPresent where Self: UIView {
+    @discardableResult mutating func setTop(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.topConstraintLayout = self.topAnchor.constraint(equalTo: superView.topAnchor, constant: constant)
         self.topConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public mutating func setSafeAreaTop(constant: CGFloat = 0) -> Self {
+    @discardableResult mutating func setSafeAreaTop(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.topConstraintLayout = self.topAnchor.constraint(equalTo: superView.layoutMarginsGuide.topAnchor, constant: constant)
         self.topConstraintLayout?.isActive = true
@@ -116,7 +137,7 @@ extension BaseUIViewPresent where Self: UIView {
         return self
     }
     
-    @discardableResult public mutating func setFullConstraint(constant: CGFloat = 0) -> UIView {
+    @discardableResult public mutating func setFullConstraint(constant: CGFloat = 0) -> Self {
         self.setTop(constant: constant)
         self.setLeading(constant: constant)
         self.setTrailing(constant: constant)

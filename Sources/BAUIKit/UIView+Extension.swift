@@ -83,22 +83,22 @@ public protocol BaseUIViewPresent {
 extension UIView: BaseUIViewPresent {
     public var topConstraintLayout: NSLayoutConstraint? {
         get { return nil }
-        set { }
+        set { self.topConstraintLayout = newValue }
     }
     
     public var leadingConstraintLayout: NSLayoutConstraint? {
         get { nil }
-        set {  }
+        set { self.leadingConstraintLayout = newValue }
     }
     
     public var trailingConstraintLayout: NSLayoutConstraint? {
         get { nil }
-        set { }
+        set { self.trailingConstraintLayout = newValue }
     }
     
     public var bottomConstraintLayout: NSLayoutConstraint? {
         get { nil }
-        set {  }
+        set { self.bottomConstraintLayout = newValue }
     }
     
     public var centerXContraintLayout: NSLayoutConstraint? {

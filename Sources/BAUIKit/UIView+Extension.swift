@@ -17,6 +17,8 @@ public protocol BaseUIViewPresent {
     var centerYConstraintLayout: NSLayoutConstraint? {get set}
     var widthConstraintLayout: NSLayoutConstraint? {get set}
     var heightConstraintLayout: NSLayoutConstraint? {get set}
+    
+    @discardableResult mutating func setTop(constant: CGFloat) -> Self
 }
 
 extension BaseUIViewPresent {

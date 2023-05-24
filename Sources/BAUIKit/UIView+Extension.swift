@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-@objc public protocol BaseUIViewPresent {
-    @objc var topConstraintLayout: NSLayoutConstraint? {get set}
-    @objc var leadingConstraintLayout: NSLayoutConstraint? {get set}
-    @objc var trailingConstraintLayout: NSLayoutConstraint? {get set}
-    @objc var bottomConstraintLayout: NSLayoutConstraint? {get set}
-    @objc var centerXContraintLayout: NSLayoutConstraint? {get set}
-    @objc var centerYConstraintLayout: NSLayoutConstraint? {get set}
-    @objc var widthConstraintLayout: NSLayoutConstraint? {get set}
-    @objc var heightConstraintLayout: NSLayoutConstraint? {get set}
+public protocol BaseUIViewPresent {
+    var topConstraintLayout: NSLayoutConstraint? {get set}
+    var leadingConstraintLayout: NSLayoutConstraint? {get set}
+    var trailingConstraintLayout: NSLayoutConstraint? {get set}
+    var bottomConstraintLayout: NSLayoutConstraint? {get set}
+    var centerXContraintLayout: NSLayoutConstraint? {get set}
+    var centerYConstraintLayout: NSLayoutConstraint? {get set}
+    var widthConstraintLayout: NSLayoutConstraint? {get set}
+    var heightConstraintLayout: NSLayoutConstraint? {get set}
 }
 
 extension BaseUIViewPresent {
@@ -58,63 +58,63 @@ extension BaseUIViewPresent {
 }
 
 extension BaseUIViewPresent where Self: UIView {
-    @discardableResult public func setTop(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setTop(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.topConstraintLayout = self.topAnchor.constraint(equalTo: superView.topAnchor, constant: constant)
         self.topConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setSafeAreaTop(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setSafeAreaTop(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.topConstraintLayout = self.topAnchor.constraint(equalTo: superView.layoutMarginsGuide.topAnchor, constant: constant)
         self.topConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setBottom(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setBottom(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.bottomConstraintLayout = self.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -constant)
         self.bottomConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setSafeAreaBottom(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setSafeAreaBottom(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.bottomConstraintLayout = self.bottomAnchor.constraint(equalTo: superView.layoutMarginsGuide.bottomAnchor, constant: -constant)
         self.bottomConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setLeading(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setLeading(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.leadingConstraintLayout = self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant)
         self.leadingConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setTrailing(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setTrailing(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.trailingConstraintLayout = self.trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: -constant)
         self.trailingConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setCenterX(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setCenterX(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.centerXContraintLayout = self.centerXAnchor.constraint(equalTo: superView.centerXAnchor, constant: constant)
         self.centerXContraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setCenterY(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setCenterY(constant: CGFloat = 0) -> Self {
         guard let superView = self.superview else {return self}
         self.centerYConstraintLayout = self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: constant)
         self.centerYConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setFullConstraint(constant: CGFloat = 0) -> UIView {
+    @discardableResult public mutating func setFullConstraint(constant: CGFloat = 0) -> UIView {
         self.setTop(constant: constant)
         self.setLeading(constant: constant)
         self.setTrailing(constant: constant)
@@ -122,7 +122,7 @@ extension BaseUIViewPresent where Self: UIView {
         return self
     }
     
-    @discardableResult public func setSafeAreaFullConstraint(constant: CGFloat = 0) -> Self {
+    @discardableResult public mutating func setSafeAreaFullConstraint(constant: CGFloat = 0) -> Self {
         self.setSafeAreaTop(constant: constant)
         self.setLeading(constant: constant)
         self.setTrailing(constant: constant)
@@ -131,68 +131,68 @@ extension BaseUIViewPresent where Self: UIView {
     }
     
     // with itSelf
-    @discardableResult public func setWidth(constant: CGFloat) -> Self {
+    @discardableResult public mutating func setWidth(constant: CGFloat) -> Self {
         self.widthConstraintLayout = self.widthAnchor.constraint(equalToConstant: constant)
         self.widthConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setHeight(constant: CGFloat) -> Self {
+    @discardableResult public mutating func setHeight(constant: CGFloat) -> Self {
         self.heightConstraintLayout = self.heightAnchor.constraint(equalToConstant: constant)
         self.heightConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setWidthEqualHeight(multiplier: CGFloat = 1) -> Self {
+    @discardableResult public mutating func setWidthEqualHeight(multiplier: CGFloat = 1) -> Self {
         self.widthConstraintLayout = self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: multiplier)
         self.widthConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setHeightEqualWidth(multiplier: CGFloat = 1) -> Self {
+    @discardableResult public mutating func setHeightEqualWidth(multiplier: CGFloat = 1) -> Self {
         self.heightConstraintLayout = self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: multiplier)
         self.heightConstraintLayout?.isActive = true
         return self
     }
     
     // with otherView
-    @discardableResult public func setTop(underView view: UIView ,constant: CGFloat) -> Self {
+    @discardableResult public mutating func setTop(underView view: UIView ,constant: CGFloat) -> Self {
         self.topConstraintLayout = self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: constant)
         self.topConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setBottom(aboveView view: UIView ,constant: CGFloat) -> Self {
+    @discardableResult public mutating func setBottom(aboveView view: UIView ,constant: CGFloat) -> Self {
         self.bottomConstraintLayout = self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -constant)
         self.bottomConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setLeading(afterView view: UIView ,constant: CGFloat) -> Self {
+    @discardableResult public mutating func setLeading(afterView view: UIView ,constant: CGFloat) -> Self {
         self.leadingConstraintLayout = self.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: constant)
         self.leadingConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setTrailing(beforeView view: UIView ,constant: CGFloat) -> Self {
+    @discardableResult public mutating func setTrailing(beforeView view: UIView ,constant: CGFloat) -> Self {
         self.trailingConstraintLayout = self.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -constant)
         self.trailingConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setCenterX(equalTo view: UIView ,constant: CGFloat) -> Self {
+    @discardableResult public mutating func setCenterX(equalTo view: UIView ,constant: CGFloat) -> Self {
         self.centerXContraintLayout = self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant)
         self.centerXContraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setCenterY(equalTo view: UIView ,constant: CGFloat) -> Self {
+    @discardableResult public mutating func setCenterY(equalTo view: UIView ,constant: CGFloat) -> Self {
         self.centerYConstraintLayout = self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant)
         self.centerYConstraintLayout?.isActive = true
         return self
     }
     
-    @discardableResult public func setWidth(otherView: UIView? = nil, multiplier: CGFloat = 1) -> Self {
+    @discardableResult public mutating func setWidth(otherView: UIView? = nil, multiplier: CGFloat = 1) -> Self {
         if let otherView = otherView {
             self.widthConstraintLayout = self.widthAnchor.constraint(equalTo: otherView.widthAnchor, multiplier: multiplier)
         } else if let superView = self.superview {
@@ -202,7 +202,7 @@ extension BaseUIViewPresent where Self: UIView {
         return self
     }
     
-    @discardableResult public func setHeight(_ otherView: UIView? = nil, multiplier: CGFloat = 1) -> Self {
+    @discardableResult public mutating func setHeight(_ otherView: UIView? = nil, multiplier: CGFloat = 1) -> Self {
         if let otherView = otherView {
             self.heightConstraintLayout = self.heightAnchor.constraint(equalTo: otherView.heightAnchor, multiplier: multiplier)
         } else if let superView = self.superview {

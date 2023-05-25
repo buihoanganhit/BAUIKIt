@@ -84,9 +84,9 @@ extension UIView {
         } else {
             var _trailingAnchor: NSLayoutConstraint
             if isSafeArea {
-                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.trailingAnchor, constant: -constant)
+                _trailingAnchor = self.trailingAnchor.constraint(equalTo: superView.layoutMarginsGuide.trailingAnchor, constant: -constant)
             } else {
-                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
+                _trailingAnchor = self.trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
             }
             _trailingAnchor.identifier = id
             _trailingAnchor.isActive = true

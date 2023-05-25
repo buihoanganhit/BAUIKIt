@@ -2,6 +2,9 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+#if canImport(UIKit)
+import UIKit
+#endif
 
 let package = Package(
     name: "BAUIKit",

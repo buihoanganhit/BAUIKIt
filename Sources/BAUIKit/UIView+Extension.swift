@@ -228,7 +228,7 @@ extension UIView {
     @discardableResult public func setCenterX(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
         let id:String = #function
         if isUpdate {
-            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.superview?.getConstraintWithIdentifier(id)?.constant = constant
             self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint

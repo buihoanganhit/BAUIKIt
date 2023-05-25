@@ -63,7 +63,6 @@ extension UIView {
             self.getConstraintWithIdentifier(id)?.constant = constant
             self.layoutIfNeeded()
         } else {
-//            self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant).isActive = true
             var _leadingAnchor: NSLayoutConstraint
             if isSafeArea {
                 _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.leadingAnchor, constant: constant)
@@ -83,7 +82,6 @@ extension UIView {
             self.getConstraintWithIdentifier(id)?.constant = -constant
             self.layoutIfNeeded()
         } else {
-//            self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant).isActive = true
             var _trailingAnchor: NSLayoutConstraint
             if isSafeArea {
                 _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.trailingAnchor, constant: -constant)
@@ -126,7 +124,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setFullConstraint(constant: CGFloat = 0) -> UIView {
+    @discardableResult public func setFullConstraint(constant: CGFloat = 0) -> Self {
         self.setTop(constant: constant).setLeading(constant: constant).setTrailing(constant: constant).setBottom(constant: constant)
         return self
     }

@@ -63,15 +63,15 @@ extension UIView {
             self.getConstraintWithIdentifier(id)?.constant = constant
             self.layoutIfNeeded()
         } else {
-            self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant).isActive = true
-//            var _leadingAnchor: NSLayoutConstraint
-//            if isSafeArea {
-//                _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.leadingAnchor, constant: constant)
-//            } else {
-//                _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant)
-//            }
-//            _leadingAnchor.identifier = id
-//            _leadingAnchor.isActive = true
+//            self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant).isActive = true
+            var _leadingAnchor: NSLayoutConstraint
+            if isSafeArea {
+                _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.leadingAnchor, constant: constant)
+            } else {
+                _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant)
+            }
+            _leadingAnchor.identifier = id
+            _leadingAnchor.isActive = true
         }
         return self
     }
@@ -83,15 +83,15 @@ extension UIView {
             self.getConstraintWithIdentifier(id)?.constant = -constant
             self.layoutIfNeeded()
         } else {
-            self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant).isActive = true
-//            var _trailingAnchor: NSLayoutConstraint
-//            if isSafeArea {
-//                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.trailingAnchor, constant: -constant)
-//            } else {
-//                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
-//            }
-//            _trailingAnchor.identifier = id
-//            _trailingAnchor.isActive = true
+//            self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant).isActive = true
+            var _trailingAnchor: NSLayoutConstraint
+            if isSafeArea {
+                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.trailingAnchor, constant: -constant)
+            } else {
+                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
+            }
+            _trailingAnchor.identifier = id
+            _trailingAnchor.isActive = true
         }
         return self
     }

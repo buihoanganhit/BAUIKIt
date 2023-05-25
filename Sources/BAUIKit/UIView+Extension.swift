@@ -10,52 +10,117 @@ import UIKit
 
 //MARK: - Constraint Layout
 extension UIView {
-    @discardableResult public func setTop(constant: CGFloat = 0) -> Self {
+    func getConstraintWithIdentifier(_ id: String) -> NSLayoutConstraint? {
+        return self.constraints.filter { $0.identifier == id}.first
+    }
+    
+
+    @discardableResult public func setTop(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+        let id: String = #function
         guard let superView = self.superview else {return self}
-        self.topAnchor.constraint(equalTo: superView.topAnchor, constant: constant).isActive = true
-        print(#function)
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var _topAnchor: NSLayoutConstraint
+            if isSafeArea {
+                _topAnchor = self.topAnchor.constraint(equalTo: superView.layoutMarginsGuide.topAnchor, constant: constant)
+            } else {
+                _topAnchor = self.topAnchor.constraint(equalTo: superView.topAnchor, constant: constant)
+            }
+            _topAnchor.identifier = id
+            _topAnchor.isActive = true
+        }
+        return self
+    }
+    
+
+    @discardableResult public func setBottom(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+        let id: String = #function
+        guard let superView = self.superview else {return self}
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = -constant
+            self.layoutIfNeeded()
+        } else {
+            var _bottomAnchor: NSLayoutConstraint
+            if isSafeArea {
+                _bottomAnchor = self.bottomAnchor.constraint(equalTo: superView.layoutMarginsGuide.bottomAnchor, constant: -constant)
+            } else {
+                _bottomAnchor = self.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -constant)
+            }
+            _bottomAnchor.identifier = id
+            _bottomAnchor.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setSafeAreaTop(constant: CGFloat = 0) -> Self {
+
+    @discardableResult public func setLeading(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+        let id: String = #function
+        
         guard let superView = self.superview else {return self}
-        self.topAnchor.constraint(equalTo: superView.layoutMarginsGuide.topAnchor, constant: constant).isActive = true
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var _leadingAnchor: NSLayoutConstraint
+            if isSafeArea {
+                _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.leadingAnchor, constant: constant)
+            } else {
+                _leadingAnchor = self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant)
+            }
+            _leadingAnchor.identifier = id
+            _leadingAnchor.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setBottom(constant: CGFloat = 0) -> Self {
+    @discardableResult public func setTrailing(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+        let id: String = #function
         guard let superView = self.superview else {return self}
-        self.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -constant).isActive = true
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = -constant
+            self.layoutIfNeeded()
+        } else {
+            var _trailingAnchor: NSLayoutConstraint
+            if isSafeArea {
+                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.layoutMarginsGuide.trailingAnchor, constant: -constant)
+            } else {
+                _trailingAnchor = self.leadingAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
+            }
+            _trailingAnchor.identifier = id
+            _trailingAnchor.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setSafeAreaBottom(constant: CGFloat = 0) -> Self {
+    @discardableResult public func setCenterX(constant: CGFloat = 0, isUpdate: Bool = false) -> Self {
+        let id: String = #function
         guard let superView = self.superview else {return self}
-        self.bottomAnchor.constraint(equalTo: superView.layoutMarginsGuide.bottomAnchor, constant: -constant).isActive = true
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var _centerXAnchor: NSLayoutConstraint
+            _centerXAnchor = self.centerXAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
+            _centerXAnchor.identifier = id
+            _centerXAnchor.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setLeading(constant: CGFloat = 0) -> Self {
+    @discardableResult public func setCenterY(constant: CGFloat = 0, isUpdate: Bool = false) -> Self {
+        let id: String = #function
         guard let superView = self.superview else {return self}
-        self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: constant).isActive = true
-        return self
-    }
-
-    @discardableResult public func setTrailing(constant: CGFloat = 0) -> Self {
-        guard let superView = self.superview else {return self}
-        self.trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: -constant).isActive = true
-        return self
-    }
-
-    @discardableResult public func setCenterX(constant: CGFloat = 0) -> Self {
-        guard let superView = self.superview else {return self}
-        self.centerXAnchor.constraint(equalTo: superView.centerXAnchor, constant: constant).isActive = true
-        return self
-    }
-
-    @discardableResult public func setCenterY(constant: CGFloat = 0) -> Self {
-        guard let superView = self.superview else {return self}
-        self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: constant).isActive = true
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var _centerYAnchor: NSLayoutConstraint
+            _centerYAnchor = self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: constant)
+            _centerYAnchor.identifier = id
+            _centerYAnchor.isActive = true
+        }
         return self
     }
 
@@ -64,19 +129,32 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setSafeAreaFullConstraint(constant: CGFloat = 0) -> Self {
-        self.setSafeAreaTop(constant: constant).setLeading(constant: constant).setTrailing(constant: constant).setSafeAreaBottom(constant: constant)
-        return self
-    }
-
     // with itSelf
-    @discardableResult public func setWidth(constant: CGFloat) -> Self {
-        self.widthAnchor.constraint(equalToConstant: constant).isActive = true
+    @discardableResult public func setWidth(constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id: String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var _widthAnchor: NSLayoutConstraint
+            _widthAnchor = self.widthAnchor.constraint(equalToConstant: constant)
+            _widthAnchor.identifier = id
+            _widthAnchor.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setHeight(constant: CGFloat) -> Self {
-        self.heightAnchor.constraint(equalToConstant: constant).isActive = true
+    @discardableResult public func setHeight(constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id: String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var _heightAnchor: NSLayoutConstraint
+            _heightAnchor = self.heightAnchor.constraint(equalToConstant: constant)
+            _heightAnchor.identifier = id
+            _heightAnchor.isActive = true
+        }
         return self
     }
 
@@ -91,33 +169,85 @@ extension UIView {
     }
 
     // with otherView
-    @discardableResult public func setTop(underView view: UIView ,constant: CGFloat) -> Self {
-        self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: constant).isActive = true
+    @discardableResult public func setTop(underView view: UIView, constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id: String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var layoutConstraint: NSLayoutConstraint
+            layoutConstraint = self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: constant)
+            layoutConstraint.identifier = id
+            layoutConstraint.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setBottom(aboveView view: UIView ,constant: CGFloat) -> Self {
-        self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -constant).isActive = true
+    @discardableResult public func setBottom(aboveView view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id:String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var layoutConstraint: NSLayoutConstraint
+            layoutConstraint = self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: constant)
+            layoutConstraint.identifier = id
+            layoutConstraint.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setLeading(afterView view: UIView ,constant: CGFloat) -> Self {
-        self.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: constant).isActive = true
+    @discardableResult public func setLeading(afterView view: UIView ,constant: CGFloat, isUpdate: Bool) -> Self {
+        let id:String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var layoutConstraint: NSLayoutConstraint
+            layoutConstraint = self.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: constant)
+            layoutConstraint.identifier = id
+            layoutConstraint.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setTrailing(beforeView view: UIView ,constant: CGFloat) -> Self {
-        self.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -constant).isActive = true
+    @discardableResult public func setTrailing(beforeView view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id:String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var layoutConstraint: NSLayoutConstraint
+            layoutConstraint = self.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant)
+            layoutConstraint.identifier = id
+            layoutConstraint.isActive = true
+        }
         return self
     }
 
-    @discardableResult public func setCenterX(equalTo view: UIView ,constant: CGFloat) -> Self {
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant).isActive = true
+    @discardableResult public func setCenterX(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id:String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var layoutConstraint: NSLayoutConstraint
+            layoutConstraint = self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant)
+            layoutConstraint.identifier = id
+        }
         return self
     }
 
-    @discardableResult public func setCenterY(equalTo view: UIView ,constant: CGFloat) -> Self {
-        self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
+    @discardableResult public func setCenterY(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id:String = #function
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.layoutIfNeeded()
+        } else {
+            var layoutConstraint: NSLayoutConstraint
+            layoutConstraint = self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant)
+            layoutConstraint.identifier = id
+        }
         return self
     }
 

@@ -20,7 +20,6 @@ extension UIView {
         guard let superView = self.superview else {return self}
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var _topAnchor: NSLayoutConstraint
             if isSafeArea {
@@ -40,7 +39,6 @@ extension UIView {
         guard let superView = self.superview else {return self}
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = -constant
-            self.layoutIfNeeded()
         } else {
             var _bottomAnchor: NSLayoutConstraint
             if isSafeArea {
@@ -61,7 +59,6 @@ extension UIView {
         guard let superView = self.superview else {return self}
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var _leadingAnchor: NSLayoutConstraint
             if isSafeArea {
@@ -80,7 +77,6 @@ extension UIView {
         guard let superView = self.superview else {return self}
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = -constant
-            self.layoutIfNeeded()
         } else {
             var _trailingAnchor: NSLayoutConstraint
             if isSafeArea {
@@ -99,7 +95,6 @@ extension UIView {
         guard let superView = self.superview else {return self}
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var _centerXAnchor: NSLayoutConstraint
             _centerXAnchor = self.centerXAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)
@@ -114,7 +109,6 @@ extension UIView {
         guard let superView = self.superview else {return self}
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var _centerYAnchor: NSLayoutConstraint
             _centerYAnchor = self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: constant)
@@ -134,7 +128,6 @@ extension UIView {
         let id: String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var _widthAnchor: NSLayoutConstraint
             _widthAnchor = self.widthAnchor.constraint(equalToConstant: constant)
@@ -148,7 +141,6 @@ extension UIView {
         let id: String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var _heightAnchor: NSLayoutConstraint
             _heightAnchor = self.heightAnchor.constraint(equalToConstant: constant)
@@ -173,7 +165,6 @@ extension UIView {
         let id: String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint
             layoutConstraint = self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: constant)
@@ -187,7 +178,6 @@ extension UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint
             layoutConstraint = self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: constant)
@@ -201,7 +191,6 @@ extension UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint
             layoutConstraint = self.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: constant)
@@ -215,7 +204,6 @@ extension UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint
             layoutConstraint = self.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant)
@@ -229,7 +217,6 @@ extension UIView {
         let id:String = #function
         if isUpdate {
             self.superview?.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint
             layoutConstraint = self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant)
@@ -242,7 +229,6 @@ extension UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
-            self.layoutIfNeeded()
         } else {
             var layoutConstraint: NSLayoutConstraint
             layoutConstraint = self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant)

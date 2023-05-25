@@ -55,7 +55,7 @@ extension UIView {
     }
 
 
-    @discardableResult public func setLeading(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setLeading(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         
         guard let superView = self.superview else {return self}
@@ -75,7 +75,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setTrailing(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setTrailing(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {

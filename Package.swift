@@ -2,13 +2,10 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
-#if canImport(UIKit)
-import UIKit
-#endif
 
 let package = Package(
     name: "BAUIKit",
-    platforms: [.iOS(.v13), .watchOS(.v6)],
+    platforms: [.iOS(.v13), .watchOS(.v6), .macOS(.v10_13)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(

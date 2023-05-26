@@ -94,7 +94,7 @@ extension UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
-            self.getConstraintWithIdentifier(id)?.constant = constant
+            self.getConstraintWithIdentifier(id)?.constant += constant
         } else {
             var _centerXAnchor: NSLayoutConstraint
             _centerXAnchor = self.centerXAnchor.constraint(equalTo: superView.trailingAnchor, constant: constant)

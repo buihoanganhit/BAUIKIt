@@ -307,15 +307,21 @@ public extension UIView {
         }
         return self
     }
-    @discardableResult func setTouchView() -> Self {
+//    @discardableResult func setTouchView() -> Self {
+//        self.isUserInteractionEnabled = true
+//        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.onTouchView)))
+//        return self
+//    }
+    
+    func onTappedView(completion: ()->()) {
         self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.onTouchView)))
-        return self
+        completion()
+//        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.onTouchView)))
     }
 }
-extension UIView {
-    @objc func onTouchView() {}
-}
+//extension UIView {
+//    @objc func onTouchView() {}
+//}
 public enum TouchAnimationType {
     case Scale(_ x: CGFloat,_ y: CGFloat)
     case Shaking(_ x: CGFloat,_ y: CGFloat)

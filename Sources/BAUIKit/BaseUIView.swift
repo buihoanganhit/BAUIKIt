@@ -25,7 +25,6 @@ open class BaseUIView: UIView {
     public init() {
         super.init(frame: .zero)
         self.updateUI()
-        self.setTouchView()
     }
     
     public required init?(coder: NSCoder) {
@@ -36,11 +35,6 @@ open class BaseUIView: UIView {
 }
 
 extension BaseUIView {
-    override internal func onTouchView() {
-        self.addTouchAnimation(type: .Shaking(-3, -3))
-        self.onTouchHandler?(self)
-    }
-
     @discardableResult public func setCorner(radius: CGFloat) -> BaseUIView {
         self.cornerRadius = radius
         return self

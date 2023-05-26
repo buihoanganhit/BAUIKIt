@@ -46,9 +46,9 @@ open class BaseUILabel: UILabel {
     
     public init() {
         super.init(frame: .zero)
-        self.setTouchView()
+//        self.setTouchView()
     }
-    
+
     public convenience init(type: TYPE, text: String = "", color: UIColor = .black, textAlignment: NSTextAlignment = .left, breakLine: NSLineBreakMode = .byWordWrapping, edgeInset: UIEdgeInsets = .zero) {
         self.init()
         self.font = UIFont.systemFont(ofSize: type.getSize)
@@ -122,8 +122,8 @@ extension BaseUILabel {
 }
 
 extension BaseUILabel {
-    @objc override internal func onTouchView() {
-        self.addTouchAnimation(type: .Scale(0.98, 0.98))
-        self.onTouchHandler?(self)
-    }
+//    @objc override internal func onTouchView() {
+//        self.addTouchAnimation(type: .Scale(0.98, 0.98))
+//        self.onTouchHandler?(self)
+//    }
 }

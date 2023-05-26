@@ -13,7 +13,7 @@ open class BaseUIImageView: UIImageView {
     
     override public init(image: UIImage?, highlightedImage: UIImage?) {
         super.init(image: image, highlightedImage: highlightedImage)
-        self.setTouchView()
+//        self.setTouchView()
     }
     
     convenience public init(imageName: String, contentMode: ContentMode = .scaleAspectFit, highlightedImageName: String = "") {
@@ -27,11 +27,11 @@ open class BaseUIImageView: UIImageView {
 }
 
 extension BaseUIImageView {
-    override internal func onTouchView() {
-        self.addTouchAnimation(type: .Shaking(-3, -3))
-        self.onTouchHandler?(self)
-    }
-    
+//    override internal func onTouchView() {
+//        self.addTouchAnimation(type: .Shaking(-3, -3))
+//        self.onTouchHandler?(self)
+//    }
+//
     @discardableResult public func setCorner(radius: CGFloat) -> Self {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true

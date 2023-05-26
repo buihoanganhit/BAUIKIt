@@ -16,14 +16,14 @@ open class BaseUIButton: UIButton {
         super.layoutSubviews()
         self.layer.cornerRadius = min(self.frame.width/2, self.frame.height/2, self.cornerRadius)
     }
-    public init() {
-        super.init(frame: .zero)
-        self.setTouchView()
-    }
-
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    public init() {
+//        super.init(frame: .zero)
+//        self.setTouchView()
+//    }
+//
+//    public required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     public convenience init(text: String, textColor: UIColor, backgroundColor: UIColor) {
         self.init()
@@ -37,9 +37,9 @@ extension BaseUIButton{
         self.cornerRadius = radius
         return self
     }
-    
-    override internal func onTouchView() {
-        self.addTouchAnimation(type: .Scale(0.98, 0.98))
-        self.onTouchHandler?(self)
-    }
+//
+//    override internal func onTouchView() {
+//        self.addTouchAnimation(type: .Scale(0.98, 0.98))
+//        self.onTouchHandler?(self)
+//    }
 }

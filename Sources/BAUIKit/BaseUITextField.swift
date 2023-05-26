@@ -25,9 +25,10 @@ open class BaseUITextField: UITextField {
         self.addTarget(self, action: #selector(self.onTextEditChange(_:)), for: .editingChanged)
     }
     
-    convenience public init(placeholder: String, padding: UIEdgeInsets = UIEdgeInsets(top: 0, left: BaseSize.mediumPadding, bottom: 0, right: BaseSize.mediumPadding)) {
+    convenience public init(placeholder: String, backgroundColor: UIColor = .white, padding: UIEdgeInsets = UIEdgeInsets(top: 0, left: BaseSize.mediumPadding, bottom: 0, right: BaseSize.mediumPadding)) {
         self.init()
         self.placeholder = placeholder
+        self.backgroundColor = backgroundColor
         self.padding = padding
     }
     

@@ -49,12 +49,13 @@ open class BaseUILabel: UILabel {
         self.setTouchView()
     }
     
-    public convenience init(type: TYPE, text: String = "", color: UIColor = .black, textAlignment: NSTextAlignment = .left, edgeInset: UIEdgeInsets = .zero) {
+    public convenience init(type: TYPE, text: String = "", color: UIColor = .black, textAlignment: NSTextAlignment = .left, breakLine: NSLineBreakMode = .byWordWrapping, edgeInset: UIEdgeInsets = .zero) {
         self.init()
         self.font = UIFont.systemFont(ofSize: type.getSize)
         self.text = text
         self.textColor = color
         self.textAlignment = textAlignment
+        self.lineBreakMode = breakLine
         self.fontType = type
         self.edgeInset = edgeInset
         self.setEdgeInsets(edge: edgeInset)

@@ -72,6 +72,14 @@ extension BaseUITextField {
         self.limitCharacter = limit
         return self
     }
+    
+    @discardableResult public func setBorder(width: CGFloat, color: UIColor, corner: CGFloat) -> Self {
+        self.addBorder(width: width, color: color)
+        self.cornerRadius = corner
+        self.layer.cornerRadius = corner
+        self.layer.masksToBounds = true
+        return self
+    }
 }
 
 extension BaseUITextField: UITextFieldDelegate {

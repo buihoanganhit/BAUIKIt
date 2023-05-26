@@ -29,6 +29,7 @@ public extension ConfigureSetupView {
         self.setInitData()
         self.setDelegate()
     }
+    
     func setHierarchySubviews() {}
     func setConstraintLayouts() {}
     func setEventComponents() {}

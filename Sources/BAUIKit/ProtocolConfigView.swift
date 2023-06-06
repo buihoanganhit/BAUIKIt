@@ -30,11 +30,11 @@ public protocol ConfigureSetupView {
 //        self.setDelegate()
 //    }
 //
-//    func setHierarchySubviews() {}
-//    func setConstraintLayouts() {}
-//    func setEventComponents() {}
-//    func setBindingViewModel() {}
-//    func setStyles() {}
-//    func setInitData() {}
-//    func setDelegate() {}
+    func setHierarchySubviews() {}
+    func setConstraintLayouts() {}
+    func setEventComponents() {}
+    func setBindingViewModel() {}
+    func setStyles() {}
+    func setInitData() {}
+    func setDelegate() {}
 //}

@@ -80,47 +80,47 @@ open class BaseUILabel: UILabel {
 }
 
 extension BaseUILabel {
-    @discardableResult public func setText(text: String) -> Self {
+    @discardableResult public func setText(text: String) -> BaseUILabel {
         self.text = text
         return self
     }
     
-    @discardableResult public func setTextAttibuted(attribute: NSMutableAttributedString) -> Self {
+    @discardableResult public func setTextAttibuted(attribute: NSMutableAttributedString) -> BaseUILabel {
         self.attributedText = attribute
         return self
     }
     
-    @discardableResult public func setMultiline(numbers: Int) -> Self {
+    @discardableResult public func setMultiline(numbers: Int) -> BaseUILabel {
         self.numberOfLines = numbers
         return self
     }
     
-    @discardableResult public func setBold() -> Self {
+    @discardableResult public func setBold() -> BaseUILabel {
         self.font = UIFont.boldSystemFont(ofSize: self.fontType.getSize)
         return self
     }
     
-    @discardableResult public func setEdgeInsets(edge: UIEdgeInsets) -> Self {
+    @discardableResult public func setEdgeInsets(edge: UIEdgeInsets) -> BaseUILabel {
         self.edgeInset = edge
         return self
     }
     
-    @discardableResult public func setTextColor(color: UIColor) -> Self {
+    @discardableResult public func setTextColor(color: UIColor) -> BaseUILabel {
         self.textColor = color
         return self
     }
     
-    @discardableResult public func setCorner(corner: CGFloat) -> Self {
+    @discardableResult public func setCorner(corner: CGFloat) -> BaseUILabel {
         self.cornerRadius = corner
         return self
     }
     
-    @discardableResult public func setBackgroundBouned(color: UIColor) -> Self {
+    @discardableResult public func setBackgroundBouned(color: UIColor) -> BaseUILabel {
         self.layer.backgroundColor = color.cgColor
         return self
     }
     
-    @discardableResult public func setContentHuggingPriority(axis: NSLayoutConstraint.Axis ,priority: UILayoutPriority = .required) -> BaseUILabel {
+    @discardableResult public func setCustomContentHuggingPriority(axis: NSLayoutConstraint.Axis ,priority: UILayoutPriority = .required) -> BaseUILabel {
         self.contentHuggingPriority(for: axis)
         self.setContentCompressionResistancePriority(priority, for: axis)
         return self

@@ -31,7 +31,7 @@ open class BaseUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func updateUI() {}
+    open func updateUI() {}
 }
 
 extension BaseUIView {

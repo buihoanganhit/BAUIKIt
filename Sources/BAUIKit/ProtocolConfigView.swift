@@ -19,7 +19,7 @@ public protocol ConfigureSetupView {
 }
 //
 //
-//public extension ConfigureSetupView {
+public extension ConfigureSetupView {
 //    func setupView() {
 //        self.setHierarchySubviews()
 //        self.setConstraintLayouts()
@@ -37,4 +37,4 @@ public protocol ConfigureSetupView {
     func setStyles() {}
     func setInitData() {}
     func setDelegate() {}
-//}
+}

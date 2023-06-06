@@ -13,7 +13,7 @@ extension UIView {
         return self.constraints.filter { $0.identifier == id}.first
     }
     
-    @discardableResult public func setTop(constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setTop(constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
@@ -27,7 +27,7 @@ extension UIView {
         return self
     }
     
-    @discardableResult public func setTop(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setTop(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
@@ -46,7 +46,7 @@ extension UIView {
     }
     
 
-    @discardableResult public func setBottom(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setBottom(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
@@ -65,7 +65,7 @@ extension UIView {
     }
 
 
-    @discardableResult public func setLeading(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setLeading(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         
         guard let superView = self.superview else {return self}
@@ -84,7 +84,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setTrailing(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setTrailing(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
@@ -102,7 +102,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setCenterX(constant: CGFloat = 0, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setCenterX(constant: CGFloat = 0, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
@@ -116,7 +116,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setCenterY(constant: CGFloat = 0, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setCenterY(constant: CGFloat = 0, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         guard let superView = self.superview else {return self}
         if isUpdate {
@@ -130,13 +130,13 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setFullConstraint(constant: CGFloat = 0) -> Self {
+    @discardableResult public func setFullConstraint(constant: CGFloat = 0) -> UIView {
         self.setTop(constant: constant).setLeading(constant: constant).setTrailing(constant: constant).setBottom(constant: constant)
         return self
     }
 
     // with itSelf
-    @discardableResult public func setWidth(constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setWidth(constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -149,7 +149,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setHeight(constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setHeight(constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -162,18 +162,18 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setWidthEqualHeight(multiplier: CGFloat = 1) -> Self {
+    @discardableResult public func setWidthEqualHeight(multiplier: CGFloat = 1) -> UIView {
         self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: multiplier).isActive = true
         return self
     }
 
-    @discardableResult public func setHeightEqualWidth(multiplier: CGFloat = 1) -> Self {
+    @discardableResult public func setHeightEqualWidth(multiplier: CGFloat = 1) -> UIView {
         self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: multiplier).isActive = true
         return self
     }
 
     // with otherView
-    @discardableResult public func setTop(underView view: UIView, constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setTop(underView view: UIView, constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id: String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -186,7 +186,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setBottom(aboveView view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setBottom(aboveView view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -199,7 +199,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setLeading(afterView view: UIView ,constant: CGFloat, isUpdate: Bool) -> Self {
+    @discardableResult public func setLeading(afterView view: UIView ,constant: CGFloat, isUpdate: Bool) -> UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -212,7 +212,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setTrailing(beforeView view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setTrailing(beforeView view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -225,7 +225,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setCenterX(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setCenterX(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id:String = #function
         if isUpdate {
             self.superview?.getConstraintWithIdentifier(id)?.constant = constant
@@ -237,7 +237,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setCenterY(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> Self {
+    @discardableResult public func setCenterY(equalTo view: UIView ,constant: CGFloat, isUpdate: Bool = false) -> UIView {
         let id:String = #function
         if isUpdate {
             self.getConstraintWithIdentifier(id)?.constant = constant
@@ -249,7 +249,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setWidth(otherView: UIView? = nil, multiplier: CGFloat = 1) -> Self {
+    @discardableResult public func setWidth(otherView: UIView? = nil, multiplier: CGFloat = 1) -> UIView {
         if let otherView = otherView {
             self.widthAnchor.constraint(equalTo: otherView.widthAnchor, multiplier: multiplier).isActive = true
         } else if let superView = self.superview {
@@ -258,7 +258,7 @@ extension UIView {
         return self
     }
 
-    @discardableResult public func setHeight(_ otherView: UIView? = nil, multiplier: CGFloat = 1) -> Self {
+    @discardableResult public func setHeight(_ otherView: UIView? = nil, multiplier: CGFloat = 1) -> UIView {
         if let otherView = otherView {
             self.heightAnchor.constraint(equalTo: otherView.heightAnchor, multiplier: multiplier).isActive = true
             return self
@@ -284,13 +284,13 @@ public extension UIView {
         return self
     }
     
-    @discardableResult func addBorder(width: CGFloat, color: UIColor) -> Self {
+    @discardableResult func addBorder(width: CGFloat, color: UIColor) -> UIView {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
         return self
     }
     
-    @discardableResult func addShadow(radius: CGFloat, offset: CGSize, opacity: Float, color: UIColor) -> Self {
+    @discardableResult func addShadow(radius: CGFloat, offset: CGSize, opacity: Float, color: UIColor) -> UIView {
         self.layer.shadowRadius = radius
         self.layer.shadowOffset = offset
         self.layer.shadowOpacity = opacity
@@ -299,7 +299,7 @@ public extension UIView {
         return self
     }
     
-    @discardableResult func addTouchAnimation(type: TouchAnimationType) -> Self {
+    @discardableResult func addTouchAnimation(type: TouchAnimationType) -> UIView {
         UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 20, options: .curveEaseInOut) {
             switch type {
             case .Scale(let x, let y):

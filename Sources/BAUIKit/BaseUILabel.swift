@@ -119,6 +119,13 @@ extension BaseUILabel {
         self.layer.backgroundColor = color.cgColor
         return self
     }
+    
+    @discardableResult public func setContentHuggingPriority(axis: NSLayoutConstraint.Axis ,priority: UILayoutPriority = .required) -> BaseUILabel {
+        self.contentHuggingPriority(for: axis)
+        self.setContentCompressionResistancePriority(priority, for: axis)
+        return self
+    }
+    
 }
 
 extension BaseUILabel {

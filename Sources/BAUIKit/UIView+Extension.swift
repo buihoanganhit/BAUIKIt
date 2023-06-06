@@ -8,13 +8,25 @@
 import Foundation
 import UIKit
 
-//MARK: - Constraint Layout
 extension UIView {
     func getConstraintWithIdentifier(_ id: String) -> NSLayoutConstraint? {
         return self.constraints.filter { $0.identifier == id}.first
     }
     
-
+    @discardableResult public func setTop(constant: CGFloat, isUpdate: Bool = false) -> Self {
+        let id: String = #function
+        guard let superView = self.superview else {return self}
+        if isUpdate {
+            self.getConstraintWithIdentifier(id)?.constant = constant
+        } else {
+            var _topAnchor: NSLayoutConstraint
+            _topAnchor = self.topAnchor.constraint(equalTo: superView.topAnchor, constant: constant)
+            _topAnchor.identifier = id
+            _topAnchor.isActive = true
+        }
+        return self
+    }
+    
     @discardableResult public func setTop(constant: CGFloat = 0, isSafeArea: Bool = false, isUpdate: Bool = false) -> Self {
         let id: String = #function
         guard let superView = self.superview else {return self}

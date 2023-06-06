@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 public protocol ConfigureSetupView {
-//    func setupView()
     func setHierarchySubviews()
     func setConstraintLayouts()
     func setEventComponents()
@@ -17,24 +16,28 @@ public protocol ConfigureSetupView {
     func setInitData()
     func setDelegate()
 }
-//
-//
+
 public extension ConfigureSetupView {
-//    func setupView() {
-//        self.setHierarchySubviews()
-//        self.setConstraintLayouts()
-//        self.setBindingViewModel()
-//        self.setStyles()
-//        self.setEventComponents()
-//        self.setInitData()
-//        self.setDelegate()
-//    }
-//
-    func setHierarchySubviews() {}
-    func setConstraintLayouts() {}
-    func setEventComponents() {}
-    func setBindingViewModel() {}
-    func setStyles() {}
-    func setInitData() {}
-    func setDelegate() {}
+
+    func setHierarchySubviews() {
+        //
+    }
+    func setConstraintLayouts() {
+        //
+    }
+    func setEventComponents() {
+        //
+    }
+    func setBindingViewModel() {
+        //
+    }
+    func setStyles() {
+        //
+    }
+    func setInitData() {
+        //
+    }
+    func setDelegate() {
+        //
+    }
 }
